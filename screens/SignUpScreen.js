@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import Slider from '@react-native-community/slider';
-import { Ionicons } from '@expo/vector-icons'; // Ensure you have @expo/vector-icons installed
+import * as ImagePicker from 'expo-image-picker';
+import { Ionicons } from '@expo/vector-icons';
 
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isPasswordValid, setIsPasswordValid] = useState(true); // New state for password validation
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [address, setAddress] = useState('');
   const [ZipCode, setZipCode] = useState('');
   const [radius, setRadius] = useState(1);
   const [selectedGoals, setSelectedGoals] = useState([]);
   const [selectedEXP, setSelectedEXP] = useState('');
+  const [image, setImage] = useState(null); // Initialize the image state
 
   const goals = [
     'Reduce Energy Consumption',
@@ -64,6 +66,27 @@ const SignUpScreen = ({ navigation }) => {
     }
   };
 
+   const pickImage = async () => {
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permissionResult.granted) {
+      Alert.alert("Permission required", "Please grant camera roll permissions to select an image.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled && result.assets?.length > 0) {
+      setImage(result.assets[0].uri); // Update the image URI in the state
+    }
+  };
+
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
@@ -74,12 +97,14 @@ const SignUpScreen = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <TouchableOpacity style={styles.photoPlaceholder}>
-          <Image
-            style={styles.profilePicture}
-            source={{ uri: 'https://via.placeholder.com/150' }}
-          />
+      <TouchableOpacity style={styles.photoPlaceholder} onPress={pickImage}>
+          {image ? (
+            <Image source={{ uri: image }} style={styles.profilePicture} />
+          ) : (
+            <Ionicons name="camera" size={32} color="#666" />
+          )}
         </TouchableOpacity>
+
 
         <Text style={styles.title}>Register</Text>
 
@@ -251,6 +276,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+  },
+  photoPlaceholder: {
+    backgroundColor: '#e0e0e0',
+    borderRadius: 75,
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  profilePicture: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
   },
   profilePicture: {
     width: 150,
