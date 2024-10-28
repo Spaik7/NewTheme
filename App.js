@@ -19,12 +19,12 @@ const App = () => {
         <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
-          options={{ title: 'Login' }}
+          options={{ headerShown : false}}
         />
         <Stack.Screen 
           name="SignUp" 
           component={SignUpScreen} 
-          options={{ title: 'Sign Up' }}
+          options={{ headerShown : false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

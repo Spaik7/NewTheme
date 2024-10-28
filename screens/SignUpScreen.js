@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import Slider from '@react-native-community/slider';
+import { Ionicons } from '@expo/vector-icons'; // Ensure you have @expo/vector-icons installed
 
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -65,6 +66,13 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.topBar}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={24} color="#FFF" />
+        </TouchableOpacity>
+        <Text style={styles.topBarTitle}>Sign Up</Text>
+      </View>
+
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <TouchableOpacity style={styles.photoPlaceholder}>
           <Image
@@ -209,6 +217,20 @@ const SignUpScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 40,
+    backgroundColor: '#1B5E20', // Dark green background
+  },
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 40, // Margin from the top for status bar area
+    marginBottom: 10,
+  },
+  topBarTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFF', // White color for the title text
+    marginLeft: 20, // Space between back button and title
   },
   scrollContainer: {
     paddingHorizontal: 20,
@@ -237,11 +259,12 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    color: '#D9D9D9',
   },
   label: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#333',
+    color: '#D9D9D9',
   },
   input: {
     borderWidth: 1,
