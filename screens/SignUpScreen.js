@@ -62,7 +62,7 @@ const SignUpScreen = ({ navigation }) => {
     } else if (!isPasswordValid) {
       Alert.alert('Error', 'Please enter a valid password.');
     } else {
-      navigation.navigate('NextScreen'); // Replace 'NextScreen' with the actual next screen name
+      navigation.navigate('Home Page', {email}); 
     }
   };
 

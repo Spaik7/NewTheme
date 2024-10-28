@@ -1,7 +1,5 @@
-// screens/LoginScreen.js
-
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const { height } = Dimensions.get('window');
@@ -9,6 +7,26 @@ const { height } = Dimensions.get('window');
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const fakeEmail = "A@a";
+  const fakepassw = 1234;
+
+  const handleLogin = () => {
+    // Check if email and password are empty
+    if (!email || !password) {
+      Alert.alert('Error', 'Please enter both email and password.');
+      return;
+    }
+
+    // fetch the data and change the if
+    if (email != fakeEmail || password != fakepassw) {
+      Alert.alert('Error', 'Invalid email or password. Please try again.');
+      return;
+    }
+
+    // Navigate to Home Page, passing the email as a parameter
+    navigation.navigate('Home Page', { email });
+  };
 
   return (
     <View style={styles.container}>
@@ -48,7 +66,7 @@ const LoginScreen = ({ navigation }) => {
           secureTextEntry
         />
 
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
       </View>
@@ -66,7 +84,7 @@ const styles = StyleSheet.create({
   IDK: {
     fontSize: 26,
     marginTop: -30,
-    textAlign: 'center', // Center only the "Login" text
+    textAlign: 'center',
     color: '#D9D9D9',
     marginBottom: 35,
   },
