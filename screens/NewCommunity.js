@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { Ionicons, Entypo } from '@expo/vector-icons'; 
+import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons'; 
 
 const { width } = Dimensions.get('window');
 
@@ -100,10 +100,7 @@ const NewCommunity = ({ navigation, route }) => {
             {/* Back to Top Button */}
             {scrollY > 200 && ( // Show button if scrolled more than 200px
                 <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
-                    <Image
-                        source={{ uri: 'https://via.placeholder.com/20?text=↑' }} // Replace with your back to top icon URI
-                        style={styles.backToTopIcon}
-                    />
+                   <AntDesign name="arrowup" size={24} color="#000" />
                 </TouchableOpacity>
             )}
         </View>
