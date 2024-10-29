@@ -14,7 +14,7 @@ const SignUpScreen = ({ navigation }) => {
   const [radius, setRadius] = useState(1);
   const [selectedGoals, setSelectedGoals] = useState([]);
   const [selectedEXP, setSelectedEXP] = useState('');
-  const [image, setImage] = useState(null); // Initialize the image state
+  const [image, setImage] = useState(null);
 
   const goals = [
     'Reduce Energy Consumption',
@@ -55,18 +55,18 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   const handleSignUp = () => {
-    if (!name || !email || !password || !address || !ZipCode || !selectedGoals || !selectedEXP) {
+    if (!name || !email || !password || !address || !ZipCode || !selectedGoals.length || !selectedEXP) {
       Alert.alert('Error', 'Please fill out all fields.');
     } else if (!isValidEmail(email)) {
       Alert.alert('Error', 'Please enter a valid email address.');
     } else if (!isPasswordValid) {
       Alert.alert('Error', 'Please enter a valid password.');
     } else {
-      navigation.navigate('Home Page', {email}); 
+      navigation.navigate('Home Page', { email }); 
     }
   };
 
-   const pickImage = async () => {
+  const pickImage = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!permissionResult.granted) {
       Alert.alert("Permission required", "Please grant camera roll permissions to select an image.");
@@ -81,11 +81,9 @@ const SignUpScreen = ({ navigation }) => {
     });
 
     if (!result.canceled && result.assets?.length > 0) {
-      setImage(result.assets[0].uri); // Update the image URI in the state
+      setImage(result.assets[0].uri);
     }
   };
-
-  
 
   return (
     <View style={styles.container}>
@@ -97,14 +95,13 @@ const SignUpScreen = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <TouchableOpacity style={styles.photoPlaceholder} onPress={pickImage}>
+        <TouchableOpacity style={styles.photoPlaceholder} onPress={pickImage}>
           {image ? (
             <Image source={{ uri: image }} style={styles.profilePicture} />
           ) : (
             <Ionicons name="camera" size={32} color="#666" />
           )}
         </TouchableOpacity>
-
 
         <Text style={styles.title}>Register</Text>
 
@@ -239,23 +236,25 @@ const SignUpScreen = ({ navigation }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    backgroundColor: '#1B5E20', // Dark green background
+    backgroundColor: '#1B5E20',
   },
   topBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 40, // Margin from the top for status bar area
+    marginTop: 10,
+    marginLeft: 10,
     marginBottom: 10,
   },
   topBarTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFF', // White color for the title text
-    marginLeft: 20, // Space between back button and title
+    color: '#FFF',
+    marginLeft: 20,
   },
   scrollContainer: {
     paddingHorizontal: 20,
@@ -277,21 +276,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  photoPlaceholder: {
-    backgroundColor: '#e0e0e0',
-    borderRadius: 75,
-    width: 150,
-    height: 150,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  profilePicture: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-  },
   profilePicture: {
     width: 150,
     height: 150,
@@ -299,7 +283,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
-    color: '#D9D9D9',
   },
   label: {
     fontSize: 16,
@@ -308,62 +291,55 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#D9D9D9',
+    borderRadius: 5,
     padding: 10,
-    borderRadius: 8,
-    fontSize: 16,
+    backgroundColor: '#FFF',
   },
   radiusLabel: {
-    textAlign: 'center',
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 5,
+    color: '#D9D9D9',
   },
   slider: {
     width: '100%',
     height: 40,
-    marginBottom: 20,
   },
   goalButton: {
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    borderRadius: 6,
-    borderColor: '#2E7D32',
+    padding: 10,
+    borderRadius: 5,
     borderWidth: 1,
-    marginVertical: 4,
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    borderColor: '#D9D9D9',
+    marginVertical: 5,
+    backgroundColor: '#FFF',
   },
   selectedGoal: {
-    backgroundColor: '#2E7D32',
+    backgroundColor: '#4CAF50',
   },
   goalButtonText: {
-    color: '#333',
-    fontSize: 12,
-    fontWeight: '500',
+    textAlign: 'center',
+    color: '#000',
   },
   selectedGoalText: {
     color: '#FFF',
-    fontWeight: '600',
   },
   signUpButton: {
-    backgroundColor: '#2E7D32',
-    paddingVertical: 15,
-    borderRadius: 8,
+    backgroundColor: '#4CAF50',
+    borderRadius: 5,
+    padding: 15,
+    alignItems: 'center',
+  },
+  disabledButton: {
+    backgroundColor: '#BDBDBD',
   },
   buttonText: {
     color: '#FFF',
     fontSize: 18,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  loginText: {
-    color: '#2E7D32',
-    marginTop: 20,
-    textAlign: 'center',
   },
   errorText: {
     color: 'red',
     fontSize: 12,
+    marginTop: 5,
   },
 });
 

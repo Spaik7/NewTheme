@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const { height } = Dimensions.get('window');
@@ -18,8 +18,8 @@ const LoginScreen = ({ navigation }) => {
       return;
     }
 
-    // fetch the data and change the if
-    if (email != fakeEmail || password != fakepassw) {
+    // Check if email and password match the fake credentials
+    if (email !== fakeEmail || password != fakepassw) {
       Alert.alert('Error', 'Invalid email or password. Please try again.');
       return;
     }
@@ -29,57 +29,64 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/150' }}
-          style={styles.image}
-        />
+    <KeyboardAvoidingView 
+      style={styles.container} 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={{ uri: 'https://via.placeholder.com/150' }}
+            style={styles.image}
+          />
 
-        <View style={styles.topBar}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24} color="#FFF" />
-          </TouchableOpacity>
-          <Text style={styles.topBarTitle}>Login</Text>
+          <View style={styles.topBar}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Ionicons name="arrow-back" size={24} color="#FFF" />
+            </TouchableOpacity>
+            <Text style={styles.topBarTitle}>Login</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.secondContainer}>
-        <Text style={styles.IDK}>Login</Text>
-        <Text style={styles.label}>E-mail address</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#D9D9D9"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
+        <View style={styles.secondContainer}>
+          <Text style={styles.IDK}>Login</Text>
+          <Text style={styles.label}>E-mail address</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#D9D9D9"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+          />
 
-        <Text style={styles.label}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#D9D9D9"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
+          <Text style={styles.label}>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#D9D9D9"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
 
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    paddingHorizontal: 20,
     backgroundColor: '#1B5E20',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingHorizontal: 20,
   },
   IDK: {
     fontSize: 26,
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: -280,
+    marginTop: -260,
     marginBottom: 10,
   },
   topBarTitle: {

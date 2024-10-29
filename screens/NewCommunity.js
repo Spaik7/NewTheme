@@ -1,10 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
 const { width } = Dimensions.get('window');
 
 const NewCommunity = ({ navigation, route }) => {
+    //const { email } = route.params;
     const email = 'Dany';
+
     const [searchText, setSearchText] = useState('');
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position
@@ -28,26 +31,28 @@ const NewCommunity = ({ navigation, route }) => {
                             } else if (index === 1) {
                                 // Add functionality for the second button
                             } else if (index === 2) {
-                                // Add functionality for the third button
+                                navigation.navigate('Home Page', { email });
                             } else if (index === 3) {
                                 // Add functionality for the fourth button
                             }
                         }}
                     >
-                        <Image
-                            source={{ uri: `https://via.placeholder.com/20?text=Icon${index + 1}` }}
-                            style={styles.icon}
-                        />
+                    {index === 0 ? (
+                            <Ionicons name="arrow-back" size={24} color="#FFF" />
+                        ) : index === 1 ? (
+                            <Entypo name="chat" size={24} color="#FFF" />  // Use Entypo icon here
+                        ) : index === 2 ? (
+                            <Ionicons name="home" size={24} color="#FFF" />
+                        ) : (
+                            <Entypo name="light-bulb" size={24} color="#FFF" />
+                        )}
                     </TouchableOpacity>
                 ))}
             </View>
 
             {/* Search Bar with Icon */}
             <View style={styles.searchContainer}>
-                <Image
-                    source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your search icon URI
-                    style={styles.searchIcon}
-                />
+            <Ionicons name="search" size={24} color="#000" />
                 <TextInput
                     style={styles.searchBar}
                     placeholder="Search"
@@ -56,13 +61,14 @@ const NewCommunity = ({ navigation, route }) => {
                 />
             </View>
 
-            <TouchableOpacity style={styles.nearbyContainer}>
+            <TouchableOpacity style={styles.nearbyContainer}
+            onPress={() => {
+                navigation.navigate('AddComunity', { email });
+            }}
+            >
                 <Text style={styles.nearbyText}>Nearby</Text>
                 <Text style={styles.recommendedText}> recommended</Text>
-                <Image
-                    source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your icon URI
-                    style={styles.nearbyIcon}
-                />
+                <Ionicons name="add" size={24} color="#000" />
             </TouchableOpacity>
 
             <ScrollView

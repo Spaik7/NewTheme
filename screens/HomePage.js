@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 const { width } = Dimensions.get('window');
 
@@ -33,37 +34,32 @@ const email = 'Dany';
       
         <View style={styles.buttonContainer}>
       
-        <TouchableOpacity 
-            style={[styles.button, styles.wideButton]}
-            onPress={() => navigation.navigate('NewCommunity', { email })}
-        >
-            <Image
-                source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your icon URI
-                style={styles.icon}
-            />
-            <Text style={styles.buttonText}>Find your community</Text>
-        </TouchableOpacity>
-
-
-
-
-      
-            <TouchableOpacity style={[styles.button, styles.narrowButton]}>
-                <Image
-                source={{ uri: 'https://via.placeholder.com/20' }} // Replace with map icon URI
-                style={[styles.icon, { marginLeft: 20 }]}
-                />
+            <TouchableOpacity 
+                style={[styles.button, styles.wideButton]}
+                onPress={() => navigation.navigate('NewCommunity', { email })}
+            >
+                <Ionicons name="search" size={24} color="#000" />
+                <Text style={styles.buttonText}>Find your community</Text>
             </TouchableOpacity>
+
+       
+            <TouchableOpacity style={[styles.button, styles.narrowButton]}>
+                <Ionicons name="map" size={24} color="#000" />
+            </TouchableOpacity>
+
         </View>
+        
 
       
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          {[...Array(10)].map((_, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text style={styles.listItemText}>Item {index + 1}</Text>
-            </View>
-          ))}
+            {[...Array(10)].map((_, index) => (
+                <View key={index} style={styles.listItem}>
+                    <Text style={styles.listItemText}>Item {index + 1}</Text>
+                    <MaterialCommunityIcons name="information-outline" size={24} color="#000" />
+                </View>
+            ))}
         </ScrollView>
+
       </View>
     </View>
   );
@@ -131,19 +127,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', // Pushes icon to left and text to the end
     borderRadius: 30,
     backgroundColor: '#4CAF50',
-},
-  narrowButton: {  
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-  },
+    },
+    narrowButton: {  
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: 'center', // Center the content vertically
+        alignItems: 'center', // Center the content horizontally
+    },
+
   buttonText: {
     color: '#fff',
     fontSize: 16,
     flex: 1, // Allow text to expand
     textAlign: 'center', // Align text to the right edge
     marginLeft: 10, // Spacing from the icon
-},
+    },
   icon: {
     width: 20,
     height: 20,
@@ -156,6 +155,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   listItem: {
+    flexDirection: 'row', // Align children in a row
+    justifyContent: 'space-between', // Space between text and icon
+    alignItems: 'center', // Center align items vertically
     backgroundColor: '#fff',
     padding: 15,
     borderRadius: 8,
@@ -164,11 +166,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 5,
-  },
+},
   listItemText: {
     fontSize: 16,
     color: '#333',
   },
+  mapIcon: {
+    marginLeft: 15, // Adjust this value as needed to move the icon to the right
+},
+
 });
 
 export default HomePage;
