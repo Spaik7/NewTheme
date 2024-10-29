@@ -61,7 +61,7 @@ const NewCommunity = ({ navigation, route }) => {
                         style={[styles.button, index === 4 ? styles.add : null]}
                         onPress={() => {
                             if (index === 0) {
-                                navigation.navigate('Home Page', { email });
+                                navigation.navigate('NewCommunity', { email });
                             } else if (index === 1) {
                                 // Add functionality for the second button
                             } else if (index === 2) {
