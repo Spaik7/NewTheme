@@ -7,6 +7,7 @@ import SignUpScreen from './screens/SignUpScreen';
 import HomePage from './screens/HomePage';
 import NewCommunity from './screens/NewCommunity'
 import AddComunity from './screens/AddComunity'
+import ComunityDescription from './screens/ComunityDescription'
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,11 @@ const App = () => {
         <Stack.Screen
           name="AddComunity"
           component={AddComunity}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="ComunityDescription"
+          component={ComunityDescription}
           options={{ headerShown : false }}
         />
       </Stack.Navigator>

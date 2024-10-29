@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Ionicons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
 
 const { width } = Dimensions.get('window');
 
 const HomePage = ({ navigation, route }) => {
   //const { email } = route.params;
 const email = 'Dany';
+
+    const scrollViewRef = useRef(null); // Reference for ScrollView
+    const [scrollY, setScrollY] = useState(0); // Track scroll position
+
+    const scrollToTop = () => {
+        scrollViewRef.current.scrollTo({ y: 0, animated: true });
+    };
+
   return (
     <View style={styles.container}>
       <Image
@@ -50,15 +58,29 @@ const email = 'Dany';
         </View>
         
 
-      
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+            <ScrollView
+                ref={scrollViewRef}
+                contentContainerStyle={styles.scrollContent}
+                onScroll={({ nativeEvent }) => {
+                    // Update the scroll position
+                    setScrollY(nativeEvent.contentOffset.y);
+                }}
+                scrollEventThrottle={16} // For performance optimization
+            >
+            
             {[...Array(10)].map((_, index) => (
                 <View key={index} style={styles.listItem}>
                     <Text style={styles.listItemText}>Item {index + 1}</Text>
                     <MaterialCommunityIcons name="information-outline" size={24} color="#000" />
                 </View>
             ))}
+            <View style={styles.footerSpace} />
         </ScrollView>
+        {scrollY > 200 && ( // Show button if scrolled more than 200px
+                <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
+                   <AntDesign name="arrowup" size={24} color="#000" />
+                </TouchableOpacity>
+            )}
 
       </View>
     </View>
@@ -173,6 +195,25 @@ const styles = StyleSheet.create({
   },
   mapIcon: {
     marginLeft: 15, // Adjust this value as needed to move the icon to the right
+},
+backToTopButton: {
+    position: 'absolute',
+    bottom: 20, // Distance from the bottom
+    right: 30, // Distance from the right
+    backgroundColor: '#4CAF50',
+    borderRadius: 20,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+},
+backToTopIcon: {
+    width: 20,
+    height: 20,
+},
+footerSpace: {
+    height: 30, // Adjust this value to control the amount of space at the end
+    marginTop: 30,
 },
 
 });

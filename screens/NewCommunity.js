@@ -55,7 +55,9 @@ const NewCommunity = ({ navigation, route }) => {
             <Ionicons name="search" size={24} color="#000" />
                 <TextInput
                     style={styles.searchBar}
-                    placeholder="Search"
+                    placeholder='Find Your New Community or Event'
+                    marginLeft = {15}
+                    placeholderTextColor={'#000'}
                     value={searchText}
                     onChangeText={(text) => setSearchText(text)}
                 />
@@ -81,21 +83,27 @@ const NewCommunity = ({ navigation, route }) => {
                 scrollEventThrottle={16} // For performance optimization
             >
                 {[...Array(10)].map((_, index) => (
-                    <View key={index} style={styles.listItem}>
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.listItem}
+                        onPress={() => {
+                            navigation.navigate('ComunityDescription', { email });
+                        }}
+                    >
                         <Image
                             source={{ uri: 'https://via.placeholder.com/20' }}
                             style={styles.listItemIcon}
                         />
                         <Text style={styles.listItemText}>Item {index + 1}</Text>
                         <Text style={styles.listItemDescription}>Item Description {index + 1}</Text>
-                    </View>
+                    </TouchableOpacity>
                 ))}
                 <Text>You got to the end of this screen!</Text>
-                <Text>Didn't found anything you like?</Text>
-                <Text>Search it ot create it!</Text>
+                <Text>Didn't find anything you like?</Text>
+                <Text>Search it or create it!</Text>
                 <View style={styles.footerSpace} />
-                
-            </ScrollView>
+            </ScrollView>   
+
 
             {/* Back to Top Button */}
             {scrollY > 200 && ( // Show button if scrolled more than 200px
