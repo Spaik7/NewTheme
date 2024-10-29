@@ -8,14 +8,13 @@ const HomePage = ({ navigation, route }) => {
 const email = 'Dany';
   return (
     <View style={styles.container}>
-      {/* Background Image */}
       <Image
         source={{ uri: 'https://via.placeholder.com/1080x1920' }}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
 
-      {/* Profile Picture at the Top Center */}
+      
       <View style={styles.profileContainer}>
         <Image
           source={{ uri: 'https://via.placeholder.com/100' }}
@@ -23,31 +22,32 @@ const email = 'Dany';
         />
       </View>
 
-      {/* Display email or other information */}
+      
       <Text style={styles.welcomeText}>Welcome, {email}</Text>
 
-      {/* Container for Buttons and Scrollable List */}
+      
       <View style={styles.bottomContainer}>
-        {/* "Join Various Community" Text */}
+      
         <Text style={styles.communityText}>Join Various Community</Text>
 
-        {/* Buttons Container */}
+      
         <View style={styles.buttonContainer}>
-            {/* First button with an icon and text */}
-            <TouchableOpacity 
-                style={[styles.button, styles.wideButton]}
-                onPress={() => navigation.navigate('NewCommunity', {email})}
-            >
-                <Image
-                    source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your icon URI
-                    style={styles.icon}
-                />
-                <Text style={styles.buttonText}>Find your community</Text>
-            </TouchableOpacity>
+      
+        <TouchableOpacity 
+            style={[styles.button, styles.wideButton]}
+            onPress={() => navigation.navigate('NewCommunity', { email })}
+        >
+            <Image
+                source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your icon URI
+                style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Find your community</Text>
+        </TouchableOpacity>
 
 
 
-            {/* Second button with only an icon */}
+
+      
             <TouchableOpacity style={[styles.button, styles.narrowButton]}>
                 <Image
                 source={{ uri: 'https://via.placeholder.com/20' }} // Replace with map icon URI
@@ -56,7 +56,7 @@ const email = 'Dany';
             </TouchableOpacity>
         </View>
 
-        {/* Full Width Scrollable List */}
+      
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {[...Array(10)].map((_, index) => (
             <View key={index} style={styles.listItem}>
@@ -123,12 +123,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   wideButton: {
-    flex: 3, // Wider button (takes up more space)
-    paddingHorizontal: 20, // Extra padding for readability
+    width: '80%',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between', // Pushes icon to left and text to the end
     borderRadius: 30,
-  },
-  narrowButton: {
-    
+    backgroundColor: '#4CAF50',
+},
+  narrowButton: {  
     width: 60,
     height: 60,
     borderRadius: 30,
@@ -136,9 +140,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    textAlign: 'center',
-    marginLeft: 10,
-  },
+    flex: 1, // Allow text to expand
+    textAlign: 'center', // Align text to the right edge
+    marginLeft: 10, // Spacing from the icon
+},
   icon: {
     width: 20,
     height: 20,
