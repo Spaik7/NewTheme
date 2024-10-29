@@ -4,8 +4,8 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions
 const { width } = Dimensions.get('window');
 
 const HomePage = ({ navigation, route }) => {
-  const { email } = route.params;
-
+  //const { email } = route.params;
+const email = 'Dany';
   return (
     <View style={styles.container}>
       {/* Background Image */}
@@ -33,12 +33,27 @@ const HomePage = ({ navigation, route }) => {
 
         {/* Buttons Container */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Button 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Button 2</Text>
-          </TouchableOpacity>
+            {/* First button with an icon and text */}
+            <TouchableOpacity 
+                style={[styles.button, styles.wideButton]}
+                onPress={() => navigation.navigate('NewCommunity', {email})}
+            >
+                <Image
+                    source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your icon URI
+                    style={styles.icon}
+                />
+                <Text style={styles.buttonText}>Find your community</Text>
+            </TouchableOpacity>
+
+
+
+            {/* Second button with only an icon */}
+            <TouchableOpacity style={[styles.button, styles.narrowButton]}>
+                <Image
+                source={{ uri: 'https://via.placeholder.com/20' }} // Replace with map icon URI
+                style={[styles.icon, { marginLeft: 20 }]}
+                />
+            </TouchableOpacity>
         </View>
 
         {/* Full Width Scrollable List */}
@@ -91,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    marginBottom: 20, // Adjusts spacing above buttons
+    marginBottom: 20,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -101,16 +116,33 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#4CAF50',
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 15,
-    paddingHorizontal: 30,
     borderRadius: 8,
-    flex: 1,
     marginHorizontal: 10,
+  },
+  wideButton: {
+    flex: 3, // Wider button (takes up more space)
+    paddingHorizontal: 20, // Extra padding for readability
+    borderRadius: 30,
+  },
+  narrowButton: {
+    
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     textAlign: 'center',
+    marginLeft: 10,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 5,
   },
   scrollContent: {
     paddingVertical: 10,

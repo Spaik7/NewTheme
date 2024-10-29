@@ -5,13 +5,13 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import HomePage from './screens/HomePage';
-
+import NewCommunity from './screens/NewCommunity'
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Home Page">
         <Stack.Screen 
           name="Welcome" 
           component={WelcomeScreen} 
@@ -30,6 +30,11 @@ const App = () => {
         <Stack.Screen
           name="Home Page"
           component={HomePage}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="NewCommunity"
+          component={NewCommunity}
           options={{ headerShown : false }}
         />
       </Stack.Navigator>
