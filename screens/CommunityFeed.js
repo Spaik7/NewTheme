@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     
     tagText: {
         position: 'absolute',
-        left: 290,
+        left: 350,
         top: 10,
         fontSize: 12,
         color: '#fff',
