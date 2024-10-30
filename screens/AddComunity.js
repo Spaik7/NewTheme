@@ -8,8 +8,8 @@ const { width } = Dimensions.get('window');
 
 const NewCommunity = ({ navigation, route }) => {
 
-    const email = 'Dany';
-    //const { email } = route.params;
+    //const email = 'Dany';
+    const { email } = route.params;
 
     const [image, setImage] = useState(null);
     const [selectedGoals, setSelectedGoals] = useState([]);

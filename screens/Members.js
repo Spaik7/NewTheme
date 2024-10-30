@@ -5,8 +5,7 @@ import { Ionicons, MaterialCommunityIcons, AntDesign,Entypo } from '@expo/vector
 const { width, height } = Dimensions.get('window');
 
 const ComunityDescription = ({ navigation, route }) => {
-    const email = 'Dany';
-    //const { email } = route.params;
+    const { email, page} = route.params;
 
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position
@@ -31,7 +30,10 @@ const ComunityDescription = ({ navigation, route }) => {
                             style={styles.button}
                             onPress={() => {
                                 if (index === 0) {
-                                    navigation.navigate('ComunityDescription', { email });
+                                    if(page==0)
+                                        navigation.navigate('ComunityDescription', { email });
+                                    else if(page==1)
+                                        navigation.navigate('CommunityFeed', { email });
                                 } else if (index === 1) {
                                     // Add functionality for the second button
                                 } else if (index === 2) {

@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 
 const HomePage = ({ navigation, route }) => {
   //const { email } = route.params;
-const email = 'Dany';
+  const email = 'Dany';
 
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position

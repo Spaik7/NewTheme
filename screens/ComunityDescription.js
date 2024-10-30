@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
@@ -7,8 +6,8 @@ const { width, height } = Dimensions.get('window');
 
 
 const ComunityDescription = ({ navigation, route }) => {
-    const email = 'Dany';
-    //const { email } = route.params;
+    //const email = 'Dany';
+    const { email } = route.params;
 
     return (
         <View style={styles.container}>
@@ -52,14 +51,14 @@ const ComunityDescription = ({ navigation, route }) => {
             
                 <View style={styles.scrollContent}>
                     <TouchableOpacity
-                    onPress={() => { navigation.navigate('Members', { email }); }}
+                    onPress={() => { navigation.navigate('Members', { email, page: 0 }); }}
                     >
                         <Text>Participant</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         style={styles.JoinButton}
-                        onPress={() => { navigation.navigate('anotherONE', { email }); }}
+                        onPress={() => { navigation.navigate('CommunityFeed', { email }); }}
                     >
                         <Text style={styles.buttonText}>Join</Text>
                     </TouchableOpacity>

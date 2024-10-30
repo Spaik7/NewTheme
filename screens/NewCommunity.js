@@ -5,8 +5,7 @@ import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
 const { width } = Dimensions.get('window');
 
 const NewCommunity = ({ navigation, route }) => {
-    //const { email } = route.params;
-    const email = 'Dany';
+    const { email } = route.params;
 
     const [searchText, setSearchText] = useState('');
     const scrollViewRef = useRef(null); // Reference for ScrollView
