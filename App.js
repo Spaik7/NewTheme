@@ -38,7 +38,6 @@ const App = () => {
           options={{ headerShown : false }}
         />
 
-
         <Stack.Screen
           name="Home Page" //0
           component={HomePage}
@@ -49,7 +48,9 @@ const App = () => {
           component={Map}
           options={{ headerShown : false }}
         />
+
         {/*Profile 2*/}
+
         <Stack.Screen
           name="Messanger" //3
           component={Messanger}
@@ -90,12 +91,15 @@ const App = () => {
           component={NewPostEvent}
           options={{ headerShown : false }}
         />
+
         {/*
-        Event Description 11
+        EventDescription 11
 
-        Document List 12
+        Comments 12
 
-        Visiting Progile 13
+        DocumentList 13
+
+        VisitProfile 14
         */}
         
        
