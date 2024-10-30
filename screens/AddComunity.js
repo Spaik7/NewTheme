@@ -65,11 +65,12 @@ const NewCommunity = ({ navigation, route }) => {
                             if (index === 0) {
                                 navigation.navigate('NewCommunity', { email });
                             } else if (index === 1) {
-                                // Add functionality for the second button
+                                navigation.navigate('Messanger', { email, page: 9 });
+                                
                             } else if (index === 2) {
                                 navigation.navigate('Home Page', { email });
                             } else if (index === 3) {
-                                // Add functionality for the fourth button
+                                navigation.navigate('QandA', { email, page: 9 });
                             } else if (index === 4) {
                                 // send and public
                             }

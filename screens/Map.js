@@ -27,11 +27,11 @@ const Map = ({ navigation, route }) => {
                                     if (index === 0) {
                                         navigation.navigate('Home Page', { email });
                                     } else if (index === 1) {
-                                        // Functionality for the second button
+                                        navigation.navigate('Messanger', { email, page: 1 });
                                     } else if (index === 2) {
                                         navigation.navigate('Home Page', { email });
                                     } else if (index === 3) {
-                                        // Functionality for the fourth button
+                                        navigation.navigate('QandA', { email, page: 1 });
                                     }
                                 }}
                             >

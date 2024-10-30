@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { Ionicons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
+import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
+import { Ionicons, MaterialCommunityIcons, AntDesign, Entypo } from '@expo/vector-icons'; 
 
 const { width } = Dimensions.get('window');
 
@@ -17,11 +17,34 @@ const HomePage = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: 'https://via.placeholder.com/1080x1920' }}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      />
+      <View style={styles.buttonContainer2}>
+    {[...Array(2)].map((_, index) => (
+      <TouchableOpacity
+        key={index}
+        style={styles.button2}
+        onPress={() => {
+          if (index === 0) {
+            navigation.navigate('Messanger', { email, page: 0 });
+          } else if (index === 1) {
+            navigation.navigate('QandA', { email, page: 0 });
+          }
+        }}
+      >
+        {index === 0 ? (
+          <Entypo name="chat" size={24} color="#FFF" />
+        ) : (
+          <Entypo name="light-bulb" size={24} color="#FFF" />
+        )}
+      </TouchableOpacity>
+    ))}
+  </View>
+
+  {/* Background Image */}
+  <ImageBackground
+    source={{ uri: 'https://via.placeholder.com/20' }}
+    style={styles.backgroundImage}
+    resizeMode="cover"
+  />
 
       
       <View style={styles.profileContainer}>
@@ -97,9 +120,29 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  buttonContainer2: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    position: 'absolute',
+    top: 60, // Set appropriate distance from top of the screen
+    left: 10, // Adjust as needed
+    zIndex: 10, // Ensure buttons are on top
+  },
+  button2: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#4CAF50',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5,
+  },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 60,
   },
   profilePicture: {
     width: 100,

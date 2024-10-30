@@ -7,8 +7,8 @@ const { width, height } = Dimensions.get('window');
 
 
 const CommunityFeed = ({ navigation, route }) => {
-    const email = 'Dany';
-    //const { email } = route.params;
+    //const email = 'Dany';
+    const { email } = route.params;
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position
 
@@ -34,11 +34,12 @@ const CommunityFeed = ({ navigation, route }) => {
                                 if (index === 0) {
                                     navigation.navigate('ComunityDescription', { email });
                                 } else if (index === 1) {
-                                    // Add functionality for the second button
+                                    navigation.navigate('Messanger', { email, page: 8 });
+                                
                                 } else if (index === 2) {
                                     navigation.navigate('Home Page', { email });
                                 } else if (index === 3) {
-                                    // Add functionality for the fourth button
+                                    navigation.navigate('QandA', { email, page: 8 });
                                 }
                             }}
                         >

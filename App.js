@@ -12,8 +12,8 @@ import Members from './screens/Members'
 import CommunityFeed from './screens/CommunityFeed'
 import NewPostEvent from './screens/NewPostEvent'
 import Map from './screens/Map'
-
-
+import Messanger from './screens/Messanger'
+import QandA from './screens/QandA'
 
 const Stack = createStackNavigator();
 
@@ -37,46 +37,68 @@ const App = () => {
           component={SignUpScreen} 
           options={{ headerShown : false }}
         />
+
+
         <Stack.Screen
-          name="Home Page"
+          name="Home Page" //0
           component={HomePage}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="NewCommunity"
+          name="Map" //1
+          component={Map}
+          options={{ headerShown : false }}
+        />
+        {/*Profile 2*/}
+        <Stack.Screen
+          name="Messanger" //3
+          component={Messanger}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+        name="QandA" //4
+        component={QandA}
+        options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="NewCommunity" //5
           component={NewCommunity}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="AddComunity"
-          component={AddComunity}
-          options={{ headerShown : false }}
-        />
-        <Stack.Screen
-          name="ComunityDescription"
+          name="ComunityDescription" //6
           component={ComunityDescription}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="Members"
+          name="Members" //7
           component={Members}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="CommunityFeed"
+          name="CommunityFeed" //8
           component={CommunityFeed}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="NewPostEvent"
-          component={NewPostEvent}
+          name="AddComunity" //9
+          component={AddComunity}
           options={{ headerShown : false }}
         />
         <Stack.Screen
-          name="Map"
-          component={Map}
+          name="NewPostEvent" //10 
+          component={NewPostEvent}
           options={{ headerShown : false }}
         />
+        {/*
+        Event Description 11
+
+        Document List 12
+
+        Visiting Progile 13
+        */}
+        
+       
       </Stack.Navigator>
     </NavigationContainer>
   );
