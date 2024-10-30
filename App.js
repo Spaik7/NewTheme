@@ -8,6 +8,9 @@ import HomePage from './screens/HomePage';
 import NewCommunity from './screens/NewCommunity'
 import AddComunity from './screens/AddComunity'
 import ComunityDescription from './screens/ComunityDescription'
+import Members from './screens/Members'
+
+
 
 const Stack = createStackNavigator();
 
@@ -15,7 +18,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home Page">
+      <Stack.Navigator initialRouteName="ComunityDescription">
         <Stack.Screen 
           name="Welcome" 
           component={WelcomeScreen} 
@@ -49,6 +52,11 @@ const App = () => {
         <Stack.Screen
           name="ComunityDescription"
           component={ComunityDescription}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="Members"
+          component={Members}
           options={{ headerShown : false }}
         />
       </Stack.Navigator>

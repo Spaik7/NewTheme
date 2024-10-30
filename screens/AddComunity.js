@@ -12,8 +12,10 @@ const NewCommunity = ({ navigation, route }) => {
     //const { email } = route.params;
 
     const [image, setImage] = useState(null);
-
     const [selectedGoals, setSelectedGoals] = useState([]);
+    const [Title, setTitle] = useState('');
+    const [Description, setDescription] = useState('');
+    const [Address, setAddress] = useState('');
     
     const goals = [
         'Solar Power',
@@ -106,6 +108,8 @@ const NewCommunity = ({ navigation, route }) => {
                         style={styles.input} 
                         placeholder="Enter Your Title" 
                         placeholderTextColor='#1B5E20'
+                        value ={Title}
+                        onChange={setTitle}
                     />
                 </View>
 
@@ -118,6 +122,8 @@ const NewCommunity = ({ navigation, route }) => {
                         multiline
                         numberOfLines={4}
                         textAlignVertical="top"
+                        value ={Description}
+                        onChange={setDescription}
                     />
                 </View>
 
@@ -127,6 +133,8 @@ const NewCommunity = ({ navigation, route }) => {
                         style={styles.input} 
                         placeholder="Enter Your Address" 
                         placeholderTextColor='#1B5E20'
+                        value ={Address}
+                        onChange={setAddress}
                     />
                 </View>
 

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet, Alert, KeyboardAvoidingView, Platform, ScrollView, Dimensions, ImageBackground } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
-import { TextInput } from 'react-native-gesture-handler';
+
 
 const { width, height } = Dimensions.get('window');
 
