@@ -51,7 +51,8 @@ const HomePage = ({ navigation, route }) => {
             </TouchableOpacity>
 
        
-            <TouchableOpacity style={[styles.button, styles.narrowButton]}>
+            <TouchableOpacity style={[styles.button, styles.narrowButton]}
+            onPress={() => navigation.navigate('Map', { email })}>
                 <Ionicons name="map" size={24} color="#000" />
             </TouchableOpacity>
 

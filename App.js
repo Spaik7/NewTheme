@@ -11,6 +11,7 @@ import ComunityDescription from './screens/ComunityDescription'
 import Members from './screens/Members'
 import CommunityFeed from './screens/CommunityFeed'
 import NewPostEvent from './screens/NewPostEvent'
+import Map from './screens/Map'
 
 
 
@@ -69,6 +70,11 @@ const App = () => {
         <Stack.Screen
           name="NewPostEvent"
           component={NewPostEvent}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="Map"
+          component={Map}
           options={{ headerShown : false }}
         />
       </Stack.Navigator>
