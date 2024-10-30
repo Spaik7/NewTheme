@@ -67,7 +67,7 @@ const CommunityFeed = ({ navigation, route }) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={[styles.button, styles.ThirdButton]}
-                        onPress={() => { navigation.navigate('CommunityFeed', { email }); }}
+                        onPress={() => { navigation.navigate('NewPostEvent', { email }); }}
                     >
                         <AntDesign name="pluscircleo" size={24} color="#000" />
                     </TouchableOpacity>
