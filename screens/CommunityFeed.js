@@ -1,12 +1,16 @@
-import React, { useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ImageBackground, ScrollView, Image } from 'react-native';
-import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import React, { useState, useRef } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions, ImageBackground, Image } from 'react-native';
+import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons'; 
+
 
 const { width, height } = Dimensions.get('window');
 
+
 const CommunityFeed = ({ navigation, route }) => {
-    const { email } = route.params;
-    const scrollViewRef = useRef(null);
+    const email = 'Dany';
+    //const { email } = route.params;
+    const scrollViewRef = useRef(null); // Reference for ScrollView
+    const [scrollY, setScrollY] = useState(0); // Track scroll position
 
     const scrollToTop = () => {
         scrollViewRef.current.scrollTo({ y: 0, animated: true });
@@ -14,11 +18,13 @@ const CommunityFeed = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
+            {/* Background Image */}
             <ImageBackground
-                source={{ uri: 'https://via.placeholder.com/20' }}
+                source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your image URL
                 style={styles.backgroundImage}
-                resizeMode="cover"
+                resizeMode="cover" // Optional: to adjust the image scaling
             >
+                {/* Button Container */}
                 <View style={styles.buttonContainer}>
                     {[...Array(4)].map((_, index) => (
                         <TouchableOpacity
@@ -39,7 +45,7 @@ const CommunityFeed = ({ navigation, route }) => {
                             {index === 0 ? (
                                 <Ionicons name="arrow-back" size={24} color="#FFF" />
                             ) : index === 1 ? (
-                                <Entypo name="chat" size={24} color="#FFF" />
+                                <Entypo name="chat" size={24} color="#FFF" />  
                             ) : index === 2 ? (
                                 <Ionicons name="home" size={24} color="#FFF" />
                             ) : (
@@ -50,7 +56,6 @@ const CommunityFeed = ({ navigation, route }) => {
                 </View>
             </ImageBackground>
 
-            <View style={styles.Whole}>
             <View style={styles.FakescrollContent}>
                 <View style={styles.headerRow}>
                     <Text style={styles.Title}>Title</Text>
@@ -70,14 +75,18 @@ const CommunityFeed = ({ navigation, route }) => {
                 <Text style={styles.CreatedBy}>Created by</Text>
             </View>
 
-            <ScrollView
-                contentContainerStyle={styles.scrollContent}
+            <ScrollView contentContainerStyle={styles.scrollContent}
                 ref={scrollViewRef}
+                onScroll={({ nativeEvent }) => {
+                    // Update the scroll position
+                    setScrollY(nativeEvent.contentOffset.y);
+                }}
+            scrollEventThrottle={16} // For performance optimization
             >
                 {[...Array(10)].map((_, index) => (
                     <View key={index} style={styles.Elements}>
                         <Image
-                            source={{ uri: 'https://via.placeholder.com/50' }}
+                            source={{ uri: 'https://via.placeholder.com/50' }} // Replace with your image URL
                             style={styles.ViewImage}
                         />
                         <View style={styles.textContainer}>
@@ -90,24 +99,26 @@ const CommunityFeed = ({ navigation, route }) => {
                 ))}
                 <View style={styles.footerSpace} />
             </ScrollView>
-            <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
-               <AntDesign name="arrowup" size={24} color="#000" />
-            </TouchableOpacity>
-            </View>
-            
+            {scrollY > 200 && ( // Show button if scrolled more than 200px
+                <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
+                   <AntDesign name="arrowup" size={24} color="#000" />
+                </TouchableOpacity>
+            )}
+
+
+        
+
         </View>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 50,
     },
     backgroundImage: {
-        height: height/2,
+        height: height / 2,
         justifyContent: 'flex-start',
-        width: '100%',
         marginTop: -50,
     },
     buttonContainer: {
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginBottom: 20,
         position: 'absolute',
-        top: 50,
+        top: 55,
     },
     button: {
         width: 40,
@@ -133,12 +144,15 @@ const styles = StyleSheet.create({
         width: width,
         backgroundColor: '#1B5E20',
         paddingHorizontal: 20,
+        marginBottom: 10,
+        minHeight: 80, // Set minimum height for readability
     },
     headerRow: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     Title: {
+        marginTop: -15,
         fontSize: 24,
         fontWeight: 'bold',
         color: '#fff',
@@ -147,12 +161,14 @@ const styles = StyleSheet.create({
     CreatedBy: {
         fontSize: 16,
         color: '#fff',
-        marginTop: -5,
+        marginTop: -15,
     },
     secondbutton: {
-        marginLeft: 190,
+        marginTop: 10,
+        marginLeft: 240,
     },
     ThirdButton: {
+        marginTop: 10,
         marginLeft: 10,
     },
     scrollContent: {
@@ -192,6 +208,7 @@ const styles = StyleSheet.create({
         color: '#666',
         marginTop: 5,
     },
+    
     tagText: {
         position: 'absolute',
         left: 290,
@@ -211,20 +228,26 @@ const styles = StyleSheet.create({
         textAlign: 'right',
     },
     backToTopButton: {
-        position: 'absolute',
-        bottom: 20,
-        right: 30,
-        backgroundColor: '#4CAF50',
-        borderRadius: 20,
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        elevation: 5,
-    },
-    footerSpace: {
-        height: 30,
-        marginTop: 20,
-    },
+    position: 'absolute',
+    bottom: 20, // Distance from the bottom
+    right: 30, // Distance from the right
+    backgroundColor: '#4CAF50',
+    borderRadius: 20,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+},
+backToTopIcon: {
+    width: 20,
+    height: 20,
+},
+footerSpace: {
+    height: 20, // Adjust this value to control the amount of space at the end
+    marginTop: 25,
+},
 });
+
+
 
 export default CommunityFeed;
