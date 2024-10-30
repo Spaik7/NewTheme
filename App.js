@@ -9,6 +9,7 @@ import NewCommunity from './screens/NewCommunity'
 import AddComunity from './screens/AddComunity'
 import ComunityDescription from './screens/ComunityDescription'
 import Members from './screens/Members'
+import CommunityFeed from './screens/CommunityFeed'
 
 
 
@@ -57,6 +58,11 @@ const App = () => {
         <Stack.Screen
           name="Members"
           component={Members}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="CommunityFeed"
+          component={CommunityFeed}
           options={{ headerShown : false }}
         />
       </Stack.Navigator>
