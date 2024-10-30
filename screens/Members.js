@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions, Image } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, AntDesign,Entypo } from '@expo/vector-icons'; 
 
 const { width, height } = Dimensions.get('window');
@@ -71,10 +71,20 @@ const ComunityDescription = ({ navigation, route }) => {
                     
                     {[...Array(10)].map((_, index) => (
                         <View key={index} style={styles.listItem}>
-                            <Text style={styles.listItemText}>Item {index + 1}</Text>
+                            <Image
+                                source={{ uri: 'https://via.placeholder.com/20' }}
+                                style={styles.immagine}
+                                resizeMode="contain"
+                            />
+                            {/* Text Container */}
+                            <View style={styles.textContainer}>
+                                <Text style={styles.listItemText}>Member {index + 1}</Text>
+                                <Text style={styles.listItemSubtext}>Additional Info</Text>
+                            </View>
                             <MaterialCommunityIcons name="information-outline" size={24} color="#000" />
                         </View>
                     ))}
+
                     <View style={styles.footerSpace} />
                 </ScrollView>
                 {scrollY > 200 && ( // Show button if scrolled more than 200px
@@ -140,6 +150,59 @@ const styles = StyleSheet.create({
     IDK:{
         fontSize:18,
     },
+    listItem: {
+        flexDirection: 'row', // Align children in a row
+        justifyContent: 'space-between', // Space between icon and text group
+        alignItems: 'center', // Center align items vertically
+        backgroundColor: '#fff',
+        padding: 15,
+        borderRadius: 8,
+        marginBottom: 10,
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    textContainer: {
+        flexDirection: 'column', 
+        marginLeft: -120, 
+        alignItems: 'flex-start', 
+    },
+    
+    listItemText: {
+        fontSize: 16,
+        color: '#333',
+    },
+    listItemSubtext: {
+        fontSize: 12,
+        color: '#666', // Slightly lighter color for distinction
+    },
+    immagine: {
+        width: width * 0.1,
+        height: width * 0.1,
+        borderRadius: (width * 0.1) / 2,
+        resizeMode: 'contain',
+    },
+    backToTopButton: {
+        position: 'absolute',
+        bottom: 20, // Distance from the bottom
+        right: 30, // Distance from the right
+        backgroundColor: '#4CAF50',
+        borderRadius: 20,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 5,
+    },
+    backToTopIcon: {
+        width: 20,
+        height: 20,
+    },
+    footerSpace: {
+        height: 20, // Adjust this value to control the amount of space at the end
+        marginTop: 30,
+    },
+      
 });
 
 export default ComunityDescription;
