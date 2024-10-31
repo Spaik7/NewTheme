@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
+import { View, Text,TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons';
-import MapView from 'react-native-maps'; // Install react-native-maps for this
 
 const { width, height } = Dimensions.get('window');
 
@@ -103,13 +102,7 @@ const Map = ({ navigation, route }) => {
                 </ImageBackground>
             </View>
 
-            {/* Interactive Map */}
-            <MapView style={styles.map} initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }} />
+            <Text>QandA</Text>
         </View>
     );
 };
@@ -142,9 +135,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 5,
-    },
-    map: {
-        flex: 1, // Fill the remaining screen space
     },
 });
 

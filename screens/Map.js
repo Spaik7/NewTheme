@@ -52,11 +52,11 @@ const Map = ({ navigation, route }) => {
 
             {/* Interactive Map */}
             <MapView style={styles.map} initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }} />
+        latitude: 39.3999,  // Latitude for Portugal
+        longitude: -8.2245, // Longitude for Portugal
+        latitudeDelta: 3.5, // Adjust this value for zoom level
+        longitudeDelta: 3.5, // Adjust this value for zoom level
+    }}  />
         </View>
     );
 };
