@@ -14,6 +14,7 @@ import NewPostEvent from './screens/NewPostEvent'
 import Map from './screens/Map'
 import Messanger from './screens/Messanger'
 import QandA from './screens/QandA'
+import Profile from './screens/Profile' 
 
 const Stack = createStackNavigator();
 
@@ -48,9 +49,11 @@ const App = () => {
           component={Map}
           options={{ headerShown : false }}
         />
-
-        {/*Profile 2*/}
-
+        <Stack.Screen
+          name="Profile" //2
+          component={Profile}
+          options={{ headerShown : false }}
+        />
         <Stack.Screen
           name="Messanger" //3
           component={Messanger}

@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     ThirdButton: {
         marginTop: 10,
         marginLeft: 10,
+        right: 10,
     },
     scrollContent: {
         paddingVertical: 10,

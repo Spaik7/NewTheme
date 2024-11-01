@@ -48,10 +48,13 @@ const HomePage = ({ navigation, route }) => {
 
       
       <View style={styles.profileContainer}>
+      <TouchableOpacity
+        onPress={() => { navigation.navigate('Profile', { email }); }}>
         <Image
           source={{ uri: 'https://via.placeholder.com/100' }}
           style={styles.profilePicture}
         />
+        </TouchableOpacity>
       </View>
 
       
