@@ -18,6 +18,7 @@ import Profile from './screens/Profile'
 import EventDescription from './screens/EventDescription'
 import Comments from './screens/Comments'
 import Chat from './screens/Chat' 
+import Answers from './screens/Answers' 
 
 const Stack = createStackNavigator();
 
@@ -100,6 +101,11 @@ const App = () => {
         <Stack.Screen
           name="EventDescription" //11
           component={EventDescription}
+          options={{ headerShown : false }}Comments
+        />
+        <Stack.Screen
+          name="Comments" //12
+          component={Comments}
           options={{ headerShown : false }}
         />
         {/*
@@ -116,6 +122,11 @@ const App = () => {
         <Stack.Screen
           name="Chat"
           component={Chat}
+          options={{ headerShown : false }}
+        />
+         <Stack.Screen
+          name="Answers"
+          component={Answers}
           options={{ headerShown : false }}
         />
         
