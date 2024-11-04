@@ -34,8 +34,7 @@ const Map = ({ navigation, route }) => {
                                             navigation.navigate('Profile', { email });
                                             break;
 
-                                            case 3: 
-                                            navigation.navigate('Messanger', { email });
+                                            case 3: ('Messanger', { email });
                                             break;
 
                                             case 5: 
@@ -79,7 +78,8 @@ const Map = ({ navigation, route }) => {
                                             break;
                                         }
                                     } else if (index === 1) {
-                                        navigation.navigate('Messanger', { email, page: 4 });
+
+                                        navigation.navigate('Messanger', { email, page: 4, DQE: page });
                                     } else if (index === 2) {
                                         navigation.navigate('Home Page', { email });
                                     }

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'rea
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
 
 const Chat  = ({navigation, route }) => {
-    const { email } = route.params;
+    const { email, page } = route.params;
 
     return(
         <View style={styles.container}>
@@ -11,7 +11,7 @@ const Chat  = ({navigation, route }) => {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        navigation.navigate('Messanger', { email });
+                        navigation.navigate('Messanger', { email, page });
                     }}
                 >
                 <Ionicons name="arrow-back" size={24} color="#FFF" />

@@ -5,7 +5,7 @@ import { Ionicons, MaterialCommunityIcons, AntDesign,Entypo } from '@expo/vector
 const { width, height } = Dimensions.get('window');
 
 const Messanger = ({ navigation, route }) => {
-    const { email, page} = route.params;
+    const { email, page, DQE } = route.params;
 
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position
@@ -45,7 +45,7 @@ const Messanger = ({ navigation, route }) => {
                                             break;
 
                                             case 4: 
-                                            navigation.navigate('QandE', { email });
+                                            navigation.navigate('QandA', { email, page: DQE });
                                             break;
 
                                             case 5: 
@@ -87,6 +87,11 @@ const Messanger = ({ navigation, route }) => {
                                             case 14: 
                                             navigation.navigate('VisitProfile', { email });
                                             break;
+
+                                            default:
+                                                navigation.navigate('Home Page', { email });
+                                            break;
+
                                         }
                                     } else if (index === 1) {
                                         navigation.navigate('Home Page', { email });
@@ -131,8 +136,9 @@ const Messanger = ({ navigation, route }) => {
                     >
                     {[...Array(10)].map((_, index) => (
                         <TouchableOpacity
+                        key={index}
                         onPress={() => {
-                            navigation.navigate('Chat', {email})
+                            navigation.navigate('Chat', {email, page})
                         }}
                         >
                             <View key={index} style={styles.listItem}>
