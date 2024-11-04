@@ -11,11 +11,7 @@ const Map = ({ navigation, route }) => {
         <View style={styles.container}>
             {/* Top Container with Background Image and Buttons */}
             <View style={styles.topContainer}>
-                <ImageBackground
-                    source={{ uri: 'https://via.placeholder.com/20' }} // Replace with your image URL
-                    style={styles.backgroundImage}
-                    resizeMode="cover"
-                >
+               
                     {/* Button Container in the Top Left */}
                     <View style={styles.buttonContainer}>
                         {[...Array(3)].map((_, index) => (
@@ -99,7 +95,7 @@ const Map = ({ navigation, route }) => {
                             </TouchableOpacity>
                         ))}
                     </View>
-                </ImageBackground>
+                
             </View>
 
             <Text>QandA</Text>

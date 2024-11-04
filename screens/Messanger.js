@@ -130,17 +130,24 @@ const Messanger = ({ navigation, route }) => {
                     scrollEventThrottle={16}
                     >
                     {[...Array(10)].map((_, index) => (
-                        <View key={index} style={styles.listItem}>
-                        <Image
-                            source={{ uri: 'https://via.placeholder.com/20' }}
-                            style={styles.immagine}
-                            resizeMode="contain"
-                        />
-                        <View style={styles.textContainer}>
-                            <Text style={styles.listItemText}>Member {index + 1}</Text>
-                            <Text style={styles.listItemSubtext}>Last text</Text>
-                        </View>
-                        </View>
+                        <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Chat', {email})
+                        }}
+                        >
+                            <View key={index} style={styles.listItem}>
+                            <Image
+                                source={{ uri: 'https://via.placeholder.com/20' }}
+                                style={styles.immagine}
+                                resizeMode="contain"
+                            />
+                            <View style={styles.textContainer}>
+                                <Text style={styles.listItemText}>Member {index + 1}</Text>
+                                <Text style={styles.listItemSubtext}>Last text</Text>
+                            </View>
+                            </View>
+                        </TouchableOpacity>
+                        
                     ))}
                     <View style={styles.footerSpace} />
                     </ScrollView>
