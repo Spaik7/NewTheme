@@ -53,7 +53,7 @@ const HomePage = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.welcomeText}>Welcome, {email}</Text>
+      <Text style={styles.welcomeText}>Welcome, {email}!</Text>
 
       <View style={styles.bottomContainer}>
         <Text style={styles.communityText}>Join Various Community</Text>
