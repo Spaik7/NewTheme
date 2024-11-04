@@ -5,111 +5,102 @@ import { Ionicons, MaterialCommunityIcons, AntDesign, Entypo } from '@expo/vecto
 const { width } = Dimensions.get('window');
 
 const HomePage = ({ navigation, route }) => {
-  //const { email } = route.params;
   const email = 'Dany';
 
-    const scrollViewRef = useRef(null); // Reference for ScrollView
-    const [scrollY, setScrollY] = useState(0); // Track scroll position
+  const scrollViewRef = useRef(null); 
+  const [scrollY, setScrollY] = useState(0);
 
-    const scrollToTop = () => {
-        scrollViewRef.current.scrollTo({ y: 0, animated: true });
-    };
+  const scrollToTop = () => {
+    scrollViewRef.current.scrollTo({ y: 0, animated: true });
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer2}>
-    {[...Array(2)].map((_, index) => (
-      <TouchableOpacity
-        key={index}
-        style={styles.button2}
-        onPress={() => {
-          if (index === 0) {
-            navigation.navigate('Messanger', { email, page: 0 });
-          } else if (index === 1) {
-            navigation.navigate('QandA', { email, page: 0 });
-          }
-        }}
-      >
-        {index === 0 ? (
-          <Entypo name="chat" size={24} color="#FFF" />
-        ) : (
-          <Entypo name="light-bulb" size={24} color="#FFF" />
-        )}
-      </TouchableOpacity>
-    ))}
-  </View>
+        {[...Array(2)].map((_, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.button2}
+            onPress={() => {
+              if (index === 0) {
+                navigation.navigate('Messanger', { email, page: 0 });
+              } else if (index === 1) {
+                navigation.navigate('QandA', { email, page: 0 });
+              }
+            }}
+          >
+            {index === 0 ? (
+              <Entypo name="chat" size={24} color="#FFF" />
+            ) : (
+              <Entypo name="light-bulb" size={24} color="#FFF" />
+            )}
+          </TouchableOpacity>
+        ))}
+      </View>
 
-  {/* Background Image */}
-  <ImageBackground
-    source={{ uri: 'https://via.placeholder.com/20' }}
-    style={styles.backgroundImage}
-    resizeMode="cover"
-  />
+      <ImageBackground
+        source={{ uri: 'https://via.placeholder.com/20' }}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      />
 
-      
       <View style={styles.profileContainer}>
-      <TouchableOpacity
-        onPress={() => { navigation.navigate('Profile', { email }); }}>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/100' }}
-          style={styles.profilePicture}
-        />
+        <TouchableOpacity onPress={() => { navigation.navigate('Profile', { email }); }}>
+          <Image
+            source={{ uri: 'https://via.placeholder.com/100' }}
+            style={styles.profilePicture}
+          />
         </TouchableOpacity>
       </View>
 
-      
       <Text style={styles.welcomeText}>Welcome, {email}</Text>
 
-      
       <View style={styles.bottomContainer}>
-      
         <Text style={styles.communityText}>Join Various Community</Text>
 
-      
         <View style={styles.buttonContainer}>
-      
-            <TouchableOpacity 
-                style={[styles.button, styles.wideButton]}
-                onPress={() => navigation.navigate('NewCommunity', { email })}
-            >
-                <Ionicons name="search" size={24} color="#000" />
-                <Text style={styles.buttonText}>Find your community</Text>
-            </TouchableOpacity>
+          <TouchableOpacity 
+            style={[styles.button, styles.wideButton]}
+            onPress={() => navigation.navigate('NewCommunity', { email })}
+          >
+            <Ionicons name="search" size={24} color="#000" />
+            <Text style={styles.buttonText}>Find your community</Text>
+          </TouchableOpacity>
 
-       
-            <TouchableOpacity style={[styles.button, styles.narrowButton]}
+          <TouchableOpacity style={[styles.button, styles.narrowButton]}
             onPress={() => navigation.navigate('Map', { email })}>
-                <Ionicons name="map" size={24} color="#000" />
-            </TouchableOpacity>
-
+            <Ionicons name="map" size={24} color="#000" />
+          </TouchableOpacity>
         </View>
-        
 
-            <ScrollView
-                ref={scrollViewRef}
-                contentContainerStyle={styles.scrollContent}
-                onScroll={({ nativeEvent }) => {
-                    // Update the scroll position
-                    setScrollY(nativeEvent.contentOffset.y);
-                }}
-                scrollEventThrottle={16} // For performance optimization
-            >
-            
-            {[...Array(10)].map((_, index) => (
-                <View key={index} style={styles.listItem}>
-                    <Text style={styles.listItemText}>Item {index + 1}</Text>
-                    <MaterialCommunityIcons name="information-outline" size={24} color="#000" />
-                </View>
-            ))}
-            <View style={styles.footerSpace} />
+        <ScrollView
+          ref={scrollViewRef}
+          contentContainerStyle={styles.scrollContent}
+          onScroll={({ nativeEvent }) => {
+            setScrollY(nativeEvent.contentOffset.y);
+          }}
+          scrollEventThrottle={16} 
+        >
+          {[...Array(10)].map((_, index) => (
+            <View key={index} style={styles.listItem}>
+              <Image
+                source={{ uri: 'https://via.placeholder.com/40' }} 
+                style={styles.itemImage} 
+              />
+              <Text style={styles.listItemText}>Item {index + 1}</Text>
+              <MaterialCommunityIcons name="information-outline" size={24} color="#000" />
+            </View>
+          ))}
+          <View style={styles.footerSpace} />
         </ScrollView>
-        {scrollY > 200 && ( // Show button if scrolled more than 200px
-                <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
-                   <AntDesign name="arrowup" size={24} color="#000" />
-                </TouchableOpacity>
-            )}
-
+        {scrollY > 200 && (
+          <TouchableOpacity style={styles.backToTopButton} onPress={scrollToTop}>
+            <AntDesign name="arrowup" size={24} color="#000" />
+          </TouchableOpacity>
+        )}
       </View>
+      
+
     </View>
   );
 };
@@ -125,14 +116,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer2: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'flex-start',
     marginHorizontal: 20,
-    marginBottom: 20,
     position: 'absolute',
-    top: 60, // Set appropriate distance from top of the screen
-    left: 10, // Adjust as needed
-    zIndex: 10, // Ensure buttons are on top
+    top: 60,
+    left: 10,
+    zIndex: 10,
   },
   button2: {
     width: 40,
@@ -191,31 +180,23 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingVertical: 15,
     paddingHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', // Pushes icon to left and text to the end
+    justifyContent: 'space-between',
     borderRadius: 30,
     backgroundColor: '#4CAF50',
-    },
-    narrowButton: {  
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        justifyContent: 'center', // Center the content vertically
-        alignItems: 'center', // Center the content horizontally
-    },
-
+  },
+  narrowButton: {  
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    flex: 1, // Allow text to expand
-    textAlign: 'center', // Align text to the right edge
-    marginLeft: 10, // Spacing from the icon
-    },
-  icon: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
+    flex: 1,
+    textAlign: 'center',
+    marginLeft: 10,
   },
   scrollContent: {
     paddingVertical: 10,
@@ -224,9 +205,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   listItem: {
-    flexDirection: 'row', // Align children in a row
-    justifyContent: 'space-between', // Space between text and icon
-    alignItems: 'center', // Center align items vertically
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#fff',
     padding: 15,
     borderRadius: 8,
@@ -235,34 +215,33 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 5,
-},
+  },
+  itemImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 10,
+  },
   listItemText: {
     fontSize: 16,
     color: '#333',
+    flex: 1,
   },
-  mapIcon: {
-    marginLeft: 15, // Adjust this value as needed to move the icon to the right
-},
-backToTopButton: {
+  backToTopButton: {
     position: 'absolute',
-    bottom: 20, // Distance from the bottom
-    right: 30, // Distance from the right
+    bottom: 20,
+    right: 30,
     backgroundColor: '#4CAF50',
     borderRadius: 20,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5,
-},
-backToTopIcon: {
-    width: 20,
-    height: 20,
-},
-footerSpace: {
-    height: 30, // Adjust this value to control the amount of space at the end
+  },
+  footerSpace: {
+    height: 30,
     marginTop: 30,
-},
-
+  },
 });
 
 export default HomePage;

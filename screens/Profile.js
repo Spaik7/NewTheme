@@ -70,10 +70,12 @@ const Profile = ({ navigation, route }) => {
           </ScrollView>
         </View>
 
+        <TouchableOpacity>
         <View style={styles.messageContainer}>
             <Text style={styles.messageText}>Write a message</Text>
             <Ionicons name="send" size={24} color="#FFF" />
         </View>
+        </TouchableOpacity>
 
         <Text style={[ { marginTop: 10 }, styles.OutsideText]}>
             Main Community

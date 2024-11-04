@@ -16,6 +16,7 @@ import Messanger from './screens/Messanger'
 import QandA from './screens/QandA'
 import Profile from './screens/Profile' 
 import EventDescription from './screens/EventDescription'
+import Comments from './screens/Comments'
 
 const Stack = createStackNavigator();
 
@@ -100,11 +101,13 @@ const App = () => {
           component={EventDescription}
           options={{ headerShown : false }}
         />
+        <Stack.Screen
+          name="Comments" //12
+          component={Comments}
+          options={{ headerShown : false }}
+        />
 
         {/*
-
-        Comments 12
-
         DocumentList 13
 
         Partner 14
