@@ -15,6 +15,7 @@ import Map from './screens/Map'
 import Messanger from './screens/Messanger'
 import QandA from './screens/QandA'
 import Profile from './screens/Profile' 
+import EventDescription from './screens/EventDescription'
 
 const Stack = createStackNavigator();
 
@@ -94,15 +95,25 @@ const App = () => {
           component={NewPostEvent}
           options={{ headerShown : false }}
         />
+        <Stack.Screen
+          name="EventDescription" //11
+          component={EventDescription}
+          options={{ headerShown : false }}
+        />
 
         {/*
-        EventDescription 11
 
         Comments 12
 
         DocumentList 13
 
-        VisitProfile 14
+        Partner 14
+
+        Expert 15 
+
+        VisitProfile 16
+
+        Chat 
         */}
         
        

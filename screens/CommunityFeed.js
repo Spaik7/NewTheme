@@ -84,6 +84,7 @@ const CommunityFeed = ({ navigation, route }) => {
                 }}
             scrollEventThrottle={16} // For performance optimization
             >
+                <TouchableOpacity onPress={() => { navigation.navigate('EventDescription', { email }); }}>
                 {[...Array(10)].map((_, index) => (
                     <View key={index} style={styles.Elements}>
                         <Image
@@ -98,6 +99,7 @@ const CommunityFeed = ({ navigation, route }) => {
                         <Text style={styles.tagText}>#Tag</Text>
                     </View>
                 ))}
+                </TouchableOpacity>
                 <View style={styles.footerSpace} />
             </ScrollView>
             {scrollY > 200 && ( // Show button if scrolled more than 200px
