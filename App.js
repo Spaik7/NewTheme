@@ -22,6 +22,7 @@ import Answers from './screens/Answers'
 import DocumentList from './screens/DocumentList'
 import Partner from './screens/Partner'
 import Expert from './screens/Expert'
+import VisitProfile from './screens/VisitProfile'
 
 
 const Stack = createStackNavigator();
@@ -127,20 +128,22 @@ const App = () => {
           component={Expert}
           options={{ headerShown : false }}
         />
-        {/*
-        VisitProfile 16
-        */}
         <Stack.Screen
-          name="Chat"
-          component={Chat}
-          options={{ headerShown : false }}
-        />
-         <Stack.Screen
-          name="Answers"
-          component={Answers}
-          options={{ headerShown : false }}
-        />
-        
+        name="VisitProfile" //16
+        component={VisitProfile}
+        options={{ headerShown : false }}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
+        options={{ headerShown : false }}
+      />
+        <Stack.Screen
+        name="Answers"
+        component={Answers}
+        options={{ headerShown : false }}
+      />
+      
        
       </Stack.Navigator>
     </NavigationContainer>

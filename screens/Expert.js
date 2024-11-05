@@ -73,6 +73,9 @@ const DocumentList = ({ navigation, route }) => {
                     >
                     {[...Array(10)].map((_, index) => (
                         <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('VisitProfile', {email, page:page})
+                        }}
                         key={index}
                         >
                             <View key={index} style={styles.listItem}>
