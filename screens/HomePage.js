@@ -5,7 +5,7 @@ import { Ionicons, MaterialCommunityIcons, AntDesign, Entypo } from '@expo/vecto
 const { width } = Dimensions.get('window');
 
 const HomePage = ({ navigation, route }) => {
-  const email = 'Dany';
+  const { email } = route.params;
 
   const scrollViewRef = useRef(null); 
   const [scrollY, setScrollY] = useState(0);

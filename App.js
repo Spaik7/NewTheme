@@ -31,7 +31,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home Page">
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen 
           name="Welcome" 
           component={WelcomeScreen} 
