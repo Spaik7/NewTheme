@@ -18,7 +18,11 @@ import Profile from './screens/Profile'
 import EventDescription from './screens/EventDescription'
 import Comments from './screens/Comments'
 import Chat from './screens/Chat' 
-import Answers from './screens/Answers' 
+import Answers from './screens/Answers'
+import DocumentList from './screens/DocumentList'
+import Partner from './screens/Partner'
+import Expert from './screens/Expert'
+
 
 const Stack = createStackNavigator();
 
@@ -108,16 +112,23 @@ const App = () => {
           component={Comments}
           options={{ headerShown : false }}
         />
+        <Stack.Screen
+          name="DocumentList" //13
+          component={DocumentList}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="Partner" //14
+          component={Partner}
+          options={{ headerShown : false }}
+        />
+        <Stack.Screen
+          name="Expert" //15
+          component={Expert}
+          options={{ headerShown : false }}
+        />
         {/*
-        DocumentList 13
-
-        Partner 14
-
-        Expert 15 
-
         VisitProfile 16
-
-        
         */}
         <Stack.Screen
           name="Chat"

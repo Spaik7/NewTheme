@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions, Image } from 'react-native';
-import { Ionicons, MaterialCommunityIcons, AntDesign,Entypo } from '@expo/vector-icons'; 
+import { Ionicons, AntDesign,Entypo } from '@expo/vector-icons'; 
 
 const { width, height } = Dimensions.get('window');
 
@@ -81,10 +81,18 @@ const Messanger = ({ navigation, route }) => {
                                             break;
 
                                             case 13: 
-                                            navigation.navigate('DocumentList', { email });
+                                            navigation.navigate('DocumentList', { email, page: DQE });
                                             break;
 
                                             case 14: 
+                                            navigation.navigate('Partner', { email, page: DQE });
+                                            break;
+
+                                            case 15: 
+                                            navigation.navigate('Expert', { email, page: DQE });
+                                            break;
+
+                                            case 16: 
                                             navigation.navigate('VisitProfile', { email });
                                             break;
 

@@ -9,7 +9,7 @@ const QandA = ({ navigation, route }) => {
     const scrollViewRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
     
-
+    
     const scrollToTop = () => {
         scrollViewRef.current.scrollTo({ y: 0, animated: true });
     };
@@ -39,7 +39,7 @@ const QandA = ({ navigation, route }) => {
                                     navigation.navigate('Profile', { email });
                                     break;
 
-                                    case 3: ('Messanger', { email });
+                                    case 3: ('Messanger', { email, page: 4 });
                                     break;
 
                                     case 5: 
@@ -79,11 +79,22 @@ const QandA = ({ navigation, route }) => {
                                     break;
 
                                     case 14: 
+                                    navigation.navigate('Partner', { email });
+                                    break;
+
+                                    case 15: 
+                                    navigation.navigate('Expert', { email });
+                                    break;
+
+                                    case 16: 
                                     navigation.navigate('VisitProfile', { email });
+                                    break;
+
+                                    default: 
+                                    navigation.navigate('Home Page', { email });
                                     break;
                                 }
                             } else if (index === 1) {
-
                                 navigation.navigate('Messanger', { email, page: 4, DQE: page });
                             } else if (index === 2) {
                                 navigation.navigate('Home Page', { email });
@@ -103,18 +114,36 @@ const QandA = ({ navigation, route }) => {
             </View>
                 
             <View style={styles.document}>
-                <View style={styles.iconButton}>
-                    <AntDesign name="file1" size={50} color='#000' />
-                    <Text style={styles.iconLabel}>Document</Text>
-                </View>
-                <View style={styles.iconButton}>
-                    <Ionicons name="people" size={50} color="#000" />
-                    <Text style={styles.iconLabel}>Partner</Text>
-                </View>
-                <View style={styles.iconButton}>
-                    <Ionicons name="person-circle-outline" size={50} color="#000" />
-                    <Text style={styles.iconLabel}>Expert</Text>
-                </View>
+                <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('DocumentList', {email, page})
+                }}>
+                    <View style={styles.iconButton}>
+                        <AntDesign name="file1" size={50} color='#000' />
+                        <Text style={styles.iconLabel}>Document</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('Partner', {email, page})
+                }}>
+                    <View style={styles.iconButton}>
+                        <Ionicons name="people" size={50} color="#000" />
+                        <Text style={styles.iconLabel}>Partner</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('Expert', {email, page})
+                }}>
+                    <View style={styles.iconButton}>
+                        <Ionicons name="person-circle-outline" size={50} color="#000" />
+                        <Text style={styles.iconLabel}>Expert</Text>
+                    </View>
+                </TouchableOpacity>
+                
             </View>
 
 
