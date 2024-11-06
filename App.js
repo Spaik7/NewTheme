@@ -27,11 +27,24 @@ import VisitProfile from './screens/VisitProfile'
 
 const Stack = createStackNavigator();
 
+import { AuthRoute}from "./route/auth"
+import { WelcomeRoute}from "./route/welcome"
+
+import {  useAuth} from "./store/auth"
+
 
 const App = () => {
+
+
+  const { email} = useAuth()
+
+
+  const isAuthorized = !!email
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      {isAuthorized ? <AuthRoute /> : <WelcomeRoute />}
+      {/* <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen 
           name="Welcome" 
           component={WelcomeScreen} 
@@ -145,7 +158,7 @@ const App = () => {
       />
       
        
-      </Stack.Navigator>
+      </Stack.Navigator> */}
     </NavigationContainer>
   );
 };

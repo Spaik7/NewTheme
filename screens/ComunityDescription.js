@@ -1,13 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
+import { useAuth} from "../store/auth";
 
 
 const { width, height } = Dimensions.get('window');
 
 
-const ComunityDescription = ({ navigation, route }) => {
+const ComunityDescription = ({ navigation }) => {
     //const email = 'Dany';
-    const { email } = route.params;
+    const { email} = useAuth();
 
     return (
         <View style={styles.container}>

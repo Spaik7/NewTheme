@@ -2,10 +2,13 @@ import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, AntDesign, Entypo } from '@expo/vector-icons'; 
 
+import { useAuth} from "../store/auth"
+
 const { width } = Dimensions.get('window');
 
-const HomePage = ({ navigation, route }) => {
-  const { email } = route.params;
+const HomePage = ({ navigation }) => {
+  // const { email } = route.params;
+  const { email} = useAuth()
 
   const scrollViewRef = useRef(null); 
   const [scrollY, setScrollY] = useState(0);

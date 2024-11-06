@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import { useAuth} from "../store/auth";
 
 const Chat  = ({navigation, route }) => {
-    const { email, page } = route.params;
-
+    const { page } = route.params;
+    const { email} = useAuth();
     return(
         <View style={styles.container}>
             <View style={styles.buttonContainer}>

@@ -4,9 +4,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 const { height } = Dimensions.get('window');
 
+import { useAuth} from "../store/auth";
+
+
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const{ handleChangeEmail } = useAuth()
 
   const fakeEmail = "A@a";
   const fakepassw = 1234;
@@ -24,8 +29,12 @@ const LoginScreen = ({ navigation }) => {
       return;
     }
 
+    handleChangeEmail(email);
+
+
+
     // Navigate to Home Page, passing the email as a parameter
-    navigation.navigate('Home Page', { email });
+    // navigation.navigate('Home Page');
   };
 
   return (

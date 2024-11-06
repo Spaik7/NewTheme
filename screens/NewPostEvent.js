@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, Alert, KeyboardAvoidin
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 import { TextInput } from 'react-native-gesture-handler';
+import { useAuth} from "../store/auth";
 
 const { width } = Dimensions.get('window');
 
 const NewCommunity = ({ navigation, route }) => {
 
     //const email = 'Dany';
-    const { email } = route.params;
-
+    const { email} = useAuth();
     const [image, setImage] = useState(null);
     const [selectedGoals, setSelectedGoals] = useState([]);
     const [Title, setTitle] = useState('');

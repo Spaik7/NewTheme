@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions, Image } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, AntDesign,Entypo } from '@expo/vector-icons'; 
+import { useAuth} from "../store/auth";
 
 const { width, height } = Dimensions.get('window');
 
 const ComunityDescription = ({ navigation, route }) => {
-    const { email, page} = route.params;
+    const { page} = route.params;
+    const { email} = useAuth();
 
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position

@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView,
 import Slider from '@react-native-community/slider';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
+import { useAuth} from "../store/auth";
 
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -15,6 +16,10 @@ const SignUpScreen = ({ navigation }) => {
   const [selectedGoals, setSelectedGoals] = useState([]);
   const [selectedEXP, setSelectedEXP] = useState('');
   const [image, setImage] = useState(null);
+
+  {/*react hook form*/}
+
+  const { handleChangeEmail} = useAuth()
 
   const goals = [
     'Reduce Energy Consumption',
@@ -62,7 +67,7 @@ const SignUpScreen = ({ navigation }) => {
     } else if (!isPasswordValid) {
       Alert.alert('Error', 'Please enter a valid password.');
     } else {
-      navigation.navigate('Home Page', { email }); 
+      handleChangeEmail(email); 
     }
   };
 

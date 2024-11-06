@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, ScrollView, StyleSheet, Dimensions,Platform } from 'react-native';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons'; 
+import { useAuth} from "../store/auth";
 
 const { width, height } = Dimensions.get('window');
 
-const EventDescription = ({ navigation, route }) => {
-    const { email } = route.params;
+const EventDescription = ({ navigation}) => {
+    const { email} = useAuth();
     
     return (
         <View style={styles.container}>

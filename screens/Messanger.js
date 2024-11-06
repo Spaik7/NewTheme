@@ -1,11 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions, Image } from 'react-native';
 import { Ionicons, AntDesign,Entypo } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
+import { useAuth} from "../store/auth";
 
 const { width, height } = Dimensions.get('window');
 
-const Messanger = ({ navigation, route }) => {
-    const { email, page, DQE } = route.params;
+const Messanger = ({ route }) => {
+    const { page } = route.params;
+    const { email} = useAuth();
+    const navigation = useNavigation();
 
     const scrollViewRef = useRef(null); // Reference for ScrollView
     const [scrollY, setScrollY] = useState(0); // Track scroll position
@@ -30,77 +34,7 @@ const Messanger = ({ navigation, route }) => {
                                 style={styles.button}
                                 onPress={() => {
                                     if (index === 0) {
-                                        switch (page)
-                                        {
-                                            case 0: 
-                                            navigation.navigate('Home Page', { email });
-                                            break;
-
-                                            case 1: 
-                                            navigation.navigate('Map', { email });
-                                            break;
-
-                                            case 2: 
-                                            navigation.navigate('Profile', { email });
-                                            break;
-
-                                            case 4: 
-                                            navigation.navigate('QandA', { email, page: DQE });
-                                            break;
-
-                                            case 5: 
-                                            navigation.navigate('NewCommunity', { email });
-                                            break;
-
-                                            case 6: 
-                                            navigation.navigate('ComunityDescription', { email });
-                                            break;
-
-                                            case 7: 
-                                            navigation.navigate('Members', { email });
-                                            break;
-
-                                            case 8: 
-                                            navigation.navigate('CommunityFeed', { email });
-                                            break;
-
-                                            case 9: 
-                                            navigation.navigate('AddComunity', { email });
-                                            break;
-
-                                            case 10: 
-                                            navigation.navigate('NewPostEvent', { email });
-                                            break;
-
-                                            case 11: 
-                                            navigation.navigate('EventDescription', { email });
-                                            break;
-
-                                            case 12: 
-                                            navigation.navigate('Comments', { email });
-                                            break;
-
-                                            case 13: 
-                                            navigation.navigate('DocumentList', { email, page: DQE });
-                                            break;
-
-                                            case 14: 
-                                            navigation.navigate('Partner', { email, page: DQE });
-                                            break;
-
-                                            case 15: 
-                                            navigation.navigate('Expert', { email, page: DQE });
-                                            break;
-
-                                            case 16: 
-                                            navigation.navigate('VisitProfile', { email });
-                                            break;
-
-                                            default:
-                                                navigation.navigate('Home Page', { email });
-                                            break;
-
-                                        }
+                                        navigation.goBack();
                                     } else if (index === 1) {
                                         navigation.navigate('Home Page', { email });
                                     } else if (index === 2) {

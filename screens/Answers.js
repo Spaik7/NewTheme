@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView, Image } from 'react-native';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import { useAuth} from "../store/auth";
 
 const { width } = Dimensions.get('window');
 
-const Answer = ({ navigation, route }) => {
-    const { email, page } = route.params;
+const Answer = ({ navigation }) => {
+    const { email} = useAuth();
     const scrollViewRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
     const [heartedComments, setHeartedComments] = useState(Array(10).fill(false)); // Array to track hearted states

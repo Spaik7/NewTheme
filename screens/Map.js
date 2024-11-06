@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import MapView from 'react-native-maps'; // Install react-native-maps for this
+import { useAuth} from "../store/auth";
 
 const { width, height } = Dimensions.get('window');
 
-const Map = ({ navigation, route }) => {
-    const { email } = route.params;
+const Map = ({ navigation }) => {
+    const { email} = useAuth();
 
     return (
         <View style={styles.container}>

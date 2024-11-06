@@ -1,13 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { View, Text,TouchableOpacity, StyleSheet, Dimensions, ScrollView, Image } from 'react-native';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { useAuth} from "../store/auth";
 
 const { width } = Dimensions.get('window');
 
-const QandA = ({ navigation, route }) => {
-    const { email, page } = route.params;
+const QandA = ({ route }) => {
+    const { page } = route.params;
+    const { email} = useAuth();
+    
     const scrollViewRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
+
+    const navigation = useNavigation();
     
     
     const scrollToTop = () => {
@@ -25,77 +31,9 @@ const QandA = ({ navigation, route }) => {
                         style={styles.button}
                         onPress={() => {
                             if (index === 0) {
-                                switch (page)
-                                {
-                                    case 0: 
-                                    navigation.navigate('Home Page', { email });
-                                    break;
-
-                                    case 1: 
-                                    navigation.navigate('Map', { email });
-                                    break;
-
-                                    case 2: 
-                                    navigation.navigate('Profile', { email });
-                                    break;
-
-                                    case 3: ('Messanger', { email, page: 4 });
-                                    break;
-
-                                    case 5: 
-                                    navigation.navigate('NewCommunity', { email });
-                                    break;
-
-                                    case 6: 
-                                    navigation.navigate('ComunityDescription', { email });
-                                    break;
-
-                                    case 7: 
-                                    navigation.navigate('Members', { email });
-                                    break;
-
-                                    case 8: 
-                                    navigation.navigate('CommunityFeed', { email });
-                                    break;
-
-                                    case 9: 
-                                    navigation.navigate('AddComunity', { email });
-                                    break;
-
-                                    case 10: 
-                                    navigation.navigate('NewPostEvent', { email });
-                                    break;
-
-                                    case 11: 
-                                    navigation.navigate('EventDescription', { email });
-                                    break;
-
-                                    case 12: 
-                                    navigation.navigate('Comments', { email });
-                                    break;
-
-                                    case 13: 
-                                    navigation.navigate('DocumentList', { email });
-                                    break;
-
-                                    case 14: 
-                                    navigation.navigate('Partner', { email });
-                                    break;
-
-                                    case 15: 
-                                    navigation.navigate('Expert', { email });
-                                    break;
-
-                                    case 16: 
-                                    navigation.navigate('VisitProfile', { email });
-                                    break;
-
-                                    default: 
-                                    navigation.navigate('Home Page', { email });
-                                    break;
-                                }
+                                navigation.goBack();
                             } else if (index === 1) {
-                                navigation.navigate('Messanger', { email, page: 4, DQE: page });
+                                navigation.navigate('Messanger', { email, page: 4});
                             } else if (index === 2) {
                                 navigation.navigate('Home Page', { email });
                             }
