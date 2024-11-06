@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         height: 200,
         backgroundColor: '#fff',
         marginTop: 10,
-        padding: 15,
+        paddingTop: 15,
         borderRadius: 20,
         marginBottom: 10,
         shadowColor: '#000',
@@ -209,9 +209,8 @@ const styles = StyleSheet.create({
     listItemIcon: {
         maxHeight: 130,
         minHeight: 130,
-        width: 390,
+        width: '100%',
         marginTop: -15,
-        marginLeft: -15,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         flex: 1,
@@ -220,11 +219,13 @@ const styles = StyleSheet.create({
     listItemText: {
         marginTop: 10,
         fontSize: 18,
+        paddingLeft: 15,
         color: '#333',
         fontWeight: 'bold',
     },
     listItemDescription: {
         fontSize: 14,
+        paddingLeft: 15,
         color: '#333',
     },
     footerSpace: {

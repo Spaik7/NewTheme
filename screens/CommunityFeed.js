@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     },
     secondbutton: {
         marginTop: 10,
-        marginLeft: 240,
+        marginLeft: '60%'
     },
     ThirdButton: {
         marginTop: 10,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     
     tagText: {
         position: 'absolute',
-        left: 350,
+        left: '90%',
         top: 10,
         fontSize: 12,
         color: '#fff',
@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     dateText: {
+        marginBottom: '10%',
         fontSize: 12,
         color: '#999',
         textAlign: 'right',

@@ -27,7 +27,7 @@ const Comments = ({ navigation, route }) => {
                         style={styles.button}
                         onPress={() => {
                             if (index === 0) {
-                                navigation.navigate('CommunityFeed', { email });
+                                navigation.navigate('EventDescription', { email });
                             } else if (index === 1) {
                                 navigation.navigate('Messanger', { email, page: 11 });
                             } else if (index === 2) {

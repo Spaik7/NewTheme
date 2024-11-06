@@ -79,6 +79,7 @@ const DocumentList = ({ navigation, route }) => {
                         key={index}
                         >
                             <View key={index} style={styles.listItem}>
+                            <View style={{ flexDirection: "row", alignItems: "center"}}>
                             <Image
                                 source={{ uri: 'https://via.placeholder.com/20' }}
                                 style={styles.immagine}
@@ -88,7 +89,12 @@ const DocumentList = ({ navigation, route }) => {
                                 <Text style={styles.listItemText}>Expert {index + 1}</Text>
                                 <Text style={styles.listItemSubtext}>Sector</Text>
                             </View>
+                            </View>
+
+                            
                             <MaterialCommunityIcons name="information-outline" size={36} color="#000" />
+                    
+                            
                             </View>
                         </TouchableOpacity>
                         
@@ -202,7 +208,6 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         flexDirection: 'column', 
-        marginRight: 220,
         alignItems: 'flex-start', 
         left: 10,
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, ScrollView, StyleSheet, Dimensions,Platform } from 'react-native';
 import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons'; 
 
 const { width, height } = Dimensions.get('window');
@@ -48,7 +48,8 @@ const EventDescription = ({ navigation, route }) => {
                 </ImageBackground>
             </View>
             
-            <View style={styles.descriptionContainer}>
+           <View style={{ flex: 1, flexDirection: "column"}}>
+           <View style={styles.descriptionContainer}>
                 <Text style={styles.title}>Electricity and more</Text>
                 
                 <ScrollView style={styles.descriptionScroll}>
@@ -66,11 +67,17 @@ const EventDescription = ({ navigation, route }) => {
                     <Ionicons name="map" size={28} color="#333" style={styles.icon} />
                 </View>
             </View>
+           </View>
 
-            <View style={styles.bottomContainer}>
-                <Entypo name="camera" size={24} style={styles.bottomIcon}/>
+
+
+            <View style={[styles.bottomContainer]}>
+               <View style={{ flex: 1, flexDirection: "row", gap: 20 }}>
+               <Entypo name="camera" size={24} style={[styles.bottomIcon, styles.firstIcon]}/>
                 <Entypo name="image" size={24} style={styles.bottomIcon}/>
                 <AntDesign name="hearto" size={24} style={styles.bottomIcon}/>
+               </View>
+               
 
                 <TouchableOpacity style={styles.commentButton}
                 onPress={() => {navigation.navigate('Comments', { email });}}
@@ -79,7 +86,6 @@ const EventDescription = ({ navigation, route }) => {
                     <Ionicons name="send" size={24} color="#FFF" />
                 </TouchableOpacity>
             </View>
-            <View style={styles.bottomContainer2}></View>
         </View>
     );
 };
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     },
     descriptionContainer: {
         paddingHorizontal: 20,
-        alignItems: 'center',
+        // alignItems: 'center',
     },
     title: {
         fontSize: 24,
@@ -123,9 +129,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     descriptionScroll: {
-        minHeight: 270, 
-        maxHeight: 270, 
         marginVertical: 10,
+        backgroundColor: "#c53030",
+        height: '70%',
     },
     descriptionText: {
         fontSize: 16,
@@ -133,14 +139,10 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     tagRow: {
-        marginLeft: -250,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginVertical: 10,
     },
     goalButton: {
-        marginLeft: 30,
         width: 80,
         alignItems: 'center',
         padding: 10,
@@ -161,13 +163,16 @@ const styles = StyleSheet.create({
     bottomContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 10,
+        justifyContent: "space-between",
+        // paddingTop: 10,
+        // marginTop: '-30%',
         paddingHorizontal: 20,
         backgroundColor: '#06402B',
+        height: Platform.OS === 'ios' ? 80 : 70,
 
     },
     commentButton: {
-        width: 220, // Adjust width for oval shape
+        width: '60%', // Adjust width for oval shape
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#4CAF50',
@@ -175,27 +180,28 @@ const styles = StyleSheet.create({
         paddingVertical: 10, // Increase padding for height
         borderRadius: 50, // Half of the button height to create an oval
         justifyContent: 'center', // Center text and icon
+        // marginTop: '-15%',
+        // marginLeft: '5%',
     },
     commentText: {
         color: '#FFF',
         marginLeft: 10,
         marginRight: 90,
+        
     },
     sendIcon: {
         marginLeft: 5,
     },
-    bottomContainer2: {
-        height:30,
-        backgroundColor: '#06402B',
-
-    },
     bottomIcon:{
-        marginHorizontal: 15,
+        // marginHorizontal: 15,
+        // marginTop: '-15%',
+    },
+    firstIcon:{
+        // marginLeft: '-3%',
     },
     icon: {
         marginLeft: 20,
     },
 
 });
-
 export default EventDescription;

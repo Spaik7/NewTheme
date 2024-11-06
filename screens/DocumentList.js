@@ -76,12 +76,16 @@ const DocumentList = ({ navigation, route }) => {
                         key={index}
                         >
                             <View key={index} style={styles.listItem}>
-                            <AntDesign name="file1" size={50} color='#000' />
+                           <View style={{ flexDirection: "row", alignItems: "center"}}>
+                           <AntDesign name="file1" size={50} color='#000' />
                             <View style={styles.textContainer}>
                                 <Text style={styles.listItemText}>Name {index + 1}</Text>
                                 <Text style={styles.listItemSubtext}>Size</Text>
                             </View>
-                            <AntDesign name="download" size={30} color='#000'/>
+                           </View>
+
+                                <AntDesign name="download" size={30} color='#000'/>
+                            
                             </View>
                         </TouchableOpacity>
                         
@@ -195,7 +199,6 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         flexDirection: 'column', 
-        marginRight: 220,
         alignItems: 'flex-start', 
     },
     footerSpace: {
